@@ -1,0 +1,14 @@
+super + b
+    firefox
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +5%
+XF86AudioLowerVolume
+    pactl set-sink-volume 0 -5%
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+@Print 
+    maim -i $(xdotool selectwindow) ~/pix/screenshots/$(date +%s).jpg
+shift + @Print    
+    maim -s ~/pix/screenshots/$(date +%s).jpg
+control + shift + @r
+    setwall    

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+device=$(bluetoothctl devices | cut -b 8- | dmenu -p "Select Device :" -l 5)
+name=$(echo $device | cut -b 19-)
+mac=$(echo $device | cut -d' ' -f1)
+bluetoothctl connect $mac &
+notify-send "Connecting to $name"
