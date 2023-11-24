@@ -6,8 +6,13 @@
 #ifndef NO_X
 #include<X11/Xlib.h>
 #endif
+#ifdef __OpenBSD__
+#define SIGPLUS			SIGUSR1+1
+#define SIGMINUS		SIGUSR1-1
+#else
 #define SIGPLUS			SIGRTMIN
 #define SIGMINUS		SIGRTMIN
+#endif
 #define LENGTH(X)               (sizeof(X) / sizeof (X[0]))
 #define CMDLENGTH		50
 #define MIN( a, b ) ( ( a < b) ? a : b )
@@ -19,6 +24,9 @@ typedef struct {
 	unsigned int interval;
 	unsigned int signal;
 } Block;
+#ifndef __OpenBSD__
+void dummysighandler(int num);
+#endif
 void sighandler(int num);
 void getcmds(int time);
 void getsigcmds(unsigned int signal);
@@ -91,6 +99,12 @@ void getsigcmds(unsigned int signal)
 
 void setupsignals()
 {
+#ifndef __OpenBSD__
+	    /* initialize all real time signals with dummy handler */
+    for (int i = SIGRTMIN; i <= SIGRTMAX; i++)
+        signal(i, dummysighandler);
+#endif
+
 	for (unsigned int i = 0; i < LENGTH(blocks); i++) {
 		if (blocks[i].signal > 0)
 			signal(SIGMINUS+blocks[i].signal, sighandler);
@@ -152,6 +166,14 @@ void statusloop()
 		sleep(1.0);
 	}
 }
+
+#ifndef __OpenBSD__
+/* this signal handler should do nothing */
+void dummysighandler(int signum)
+{
+    return;
+}
+#endif
 
 void sighandler(int signum)
 {

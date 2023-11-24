@@ -2,12 +2,13 @@
 static const Block blocks[] = {
 
 /*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-  {"",  "volume", 1,  0},
+  {"",  "volume", 1,  10},
   {"",  "internet", 5,  4},
-  {"",  "battery", 1, 1},
+  {"",  "battery",  0, 1},
   {"",  "clock",  60, 1},
+
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
 static char delim[] = " | ";
-static unsigned int delimLen = 5;
+static unsigned int delimLen = 7;
