@@ -37,6 +37,7 @@ xrandr --output HDMI-1 --mode "1920x1080"
 ~/.local/bin/setwall &
 xcompmgr &
 dwmblocks &
+numlockx &
 dunst &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 exec dwm

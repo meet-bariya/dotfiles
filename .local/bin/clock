@@ -11,5 +11,5 @@ case $BLOCK_BUTTON in
 - Middle click opens calcurse if installed" ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
-
-date "+%Y %b %d (%a) $icon%I:%M%p "
+time=$(date "+%d %b,%a | $icon %I:%M%p")
+printf "$cal_icon $time" 

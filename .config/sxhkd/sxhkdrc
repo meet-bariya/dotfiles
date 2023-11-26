@@ -1,5 +1,7 @@
 super + b
     firefox
+super + shift + b
+    firefox --private-window
 XF86AudioRaiseVolume
     pactl set-sink-volume 0 +5%
 XF86AudioLowerVolume
@@ -12,3 +14,5 @@ shift + @Print
     maim -s ~/pix/screenshots/$(date +%s).jpg
 control + shift + @r
     setwall    
+super + l 
+    systemctl suspend

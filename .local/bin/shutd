@@ -1,2 +1,2 @@
 #!/bin/sh
-shutdown now
+shutdown now && send-notify "Shutdown initiated :)"

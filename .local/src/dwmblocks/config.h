@@ -2,11 +2,11 @@
 static const Block blocks[] = {
 
 /*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-  {"",  "volume", 1,  10},
+  {"",  "memory", 1, 1},
   {"",  "internet", 5,  4},
   {"",  "battery",  0, 1},
+  {"",  "dwmvolume", 1,  10},
   {"",  "clock",  60, 1},
-
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
