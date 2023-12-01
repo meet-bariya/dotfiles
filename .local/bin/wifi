@@ -2,6 +2,6 @@
 
 bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -p "Select Wifi: " -l 5 | cut -d' ' -f1)
 pass=$(echo "" | dmenu -p "Enter Password: ")
-wifiname=$(nmcli -t -f NAME c s --active | head -1)
+wifiname=$(nmcli device wifi | grep $bssid | cut -b 28- | cut -d' ' -f1)
 
 nmcli device wifi connect $bssid password $pass && notify-send "Connected to $wifiname" || notify-send "Connection Failed"
