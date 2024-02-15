@@ -1,4 +1,4 @@
 #!/bin/sh
 
 playlist=$(find ~/music -maxdepth 1 -type d | sed -n '1!p' | grep -v 'venv' | cut -b 18- | dmenu -p "Select Playlist: " -l 5)
-mpv --shuffle -playlist ~/music/$playlist && notify-send "Started Playlist $playlist" || notify-send "No Playlist found"
+notify-send "Started Playlist $playlist" && mpv --shuffle -playlist ~/music/$playlist || notify-send "No Playlist found"

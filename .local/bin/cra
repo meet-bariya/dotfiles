@@ -1,0 +1,45 @@
+#!/bin/bash
+
+echo "Creating React App..."
+cd ~/code/react
+npm create vite@latest $1 -- --template react
+cd $1
+npm i 
+
+echo "Initializing tailwind CSS..."
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+echo '/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}' > tailwind.config.js
+
+echo "@tailwind base;
+@tailwind components;
+@tailwind utilities;" > src/index.css
+
+echo "Refactoring the code..."
+cd src
+echo "import React from 'react'
+
+const App = () => {
+  return (
+    <div>App</div>
+  )
+}
+
+export default App" > App.jsx
+
+rm -r assets
+
+mkdir components
+
+vscodium .. 

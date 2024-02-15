@@ -1,2 +1,0 @@
-#!/bin/sh
-systemctl suspend && notify-send "Going in sleep mode :)"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+username=$(echo "" | dmenu -p "Username: ")
+cd ~/insta
+instaloader $username --no-videos --no-captions --no-metadata-json --no-compress-json --no-resume --no-iphone 
+cd ~/insta/$username
+rm id
+for f in *;do echo -e "file '$f'\nduration 2";done > list.txt
+sed -i "/list/d" list.txt

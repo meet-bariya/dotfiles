@@ -23,3 +23,9 @@ alias gs="git status"
 alias cvenv="python3 -m venv venv"
 alias venv="source venv/bin/activate"
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias lf='lfub'
+#alias rm='rm -i'
+
+remove(){
+  mv "$1" ~/.trash
+}
