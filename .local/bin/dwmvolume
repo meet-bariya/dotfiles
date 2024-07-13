@@ -27,8 +27,8 @@ split() {
 	printf '%s' "$@"
 }
 
-vol="$(printf "%.0f" "$(split "$vol" ".")")"
-
+#vol="$(printf "%.0f" "$(split "$vol" ".")")"
+vol="$(pulsemixer --get-volume | awk '{print $1}')"
 case 1 in
 	$((vol >= 50)) ) icon="🔊 " ;;
 	$((vol >= 1)) ) icon="🔈 " ;;

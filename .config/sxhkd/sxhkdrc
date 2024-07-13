@@ -9,9 +9,9 @@ XF86AudioLowerVolume
 XF86AudioMute
     pactl set-sink-mute 0 toggle
 @Print 
-    maim -i $(xdotool selectwindow) ~/pix/screenshots/$(date +%d-%m-%Y_%H-%M-%S).jpg
+    mkdir -p ~/pix/screenshots/$(date +%d-%m-%Y) && maim -i $(xdotool selectwindow) ~/pix/screenshots/$(date +%d-%m-%Y)/$(date +%d-%m-%Y_%H-%M-%S).jpg
 shift + @Print    
-    maim -s ~/pix/screenshots/$(date +%d-%m-%Y_%H-%M-%S).jpg
+    mkdir -p ~/pix/screenshots/$(date +%d-%m-%Y) && maim -s ~/pix/screenshots/$(date +%d-%m-%Y)/$(date +%d-%m-%Y_%H-%M-%S).jpg
 control + shift + @r
     setwall    
 control + shift + @l 
